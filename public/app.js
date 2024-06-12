@@ -37,18 +37,15 @@ document.getElementById('fetch-articles').addEventListener('click', async () => 
       articleLink.rel = 'noopener noreferrer';
       articleLink.textContent = article.title;
 
-
-      // Append elements to list item
       listItem.appendChild(articleNumber);
       listItem.appendChild(articleLink);
       
-      // Append list item to articles list
+
       articlesList.appendChild(listItem);
     });
   } catch (error) {
     console.error('Failed to fetch articles:', error);
   } finally {
-    // Hide loading message after fetch completes (success or error)
     loadingText.style.display = 'none';
   }
 });
