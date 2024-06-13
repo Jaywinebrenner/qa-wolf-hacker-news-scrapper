@@ -8,6 +8,6 @@
       { "handle": "filesystem" },
       { "src": "/(.*)", "dest": "/index.js" }
     ],
-    "buildCommand": "npm install && npx playwright install chromium"
+    "buildCommand": "npx playwright install chromium"
   }
   
