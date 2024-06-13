@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const { connectOverCDP } = require('playwright-core');
+const { chromium } = require('playwright-core');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,8 +28,7 @@ app.get('/api/articles', async (req, res) => {
 });
 
 async function fetchArticles() {
-  const browserURL = 'wss://chrome.browserless.io?token=YOUR_BROWSERLESS_TOKEN';
-  const browser = await connectOverCDP({ wsEndpoint: browserURL });
+  const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
 
