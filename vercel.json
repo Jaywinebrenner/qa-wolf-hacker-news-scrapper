@@ -5,7 +5,8 @@
     ],
     "routes": [
       { "src": "/api/articles", "dest": "/index.js" },
-      { "src": "/(.*)", "dest": "/index.js" }
-    ]
+      { "handle": "filesystem" }
+    ],
+    "buildCommand": "npx playwright install chromium"
   }
   

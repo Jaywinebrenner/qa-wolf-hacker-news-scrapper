@@ -1,31 +1,4 @@
-const path = require('path');
-const express = require('express');
 const { chromium } = require('playwright');
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Middleware to set the correct MIME type for CSS files
-app.use((req, res, next) => {
-  if (req.url.endsWith('.css')) {
-    res.setHeader('Content-Type', 'text/css');
-  }
-  next();
-});
-
-// API endpoint to fetch articles
-app.get('/api/articles', async (req, res) => {
-  try {
-    const articles = await fetchArticles();
-    res.json({ articles });
-  } catch (error) {
-    console.error('Error fetching articles:', error);
-    res.status(500).json({ error: 'Failed to fetch articles' });
-  }
-});
 
 async function fetchArticles() {
   const browser = await chromium.launch();
@@ -64,14 +37,12 @@ async function fetchArticles() {
 
     return articles.slice(0, 100); // Return only the first 100 articles
   } catch (error) {
-    console.error('Error in fetchArticles:', error);
+    console.error('Error in fetchArticles:', error.message);
+    console.error('Error stack trace:', error.stack);
     return [];
   } finally {
     await browser.close();
   }
 }
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+module.exports = fetchArticles;
