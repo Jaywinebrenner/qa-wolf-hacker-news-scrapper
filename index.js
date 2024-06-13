@@ -43,7 +43,6 @@ async function fetchArticles() {
       const newArticles = await page.$$eval('.athing', (articles) =>
         articles.map((article) => {
           const titleElement = article.querySelector('.titleline > a');
-
           const title = titleElement ? titleElement.innerText : 'No title';
           const link = titleElement ? titleElement.href : '#';
 
