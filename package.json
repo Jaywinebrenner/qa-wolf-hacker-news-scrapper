@@ -1,7 +1,7 @@
 {
   "name": "qa_wolf_take_home",
   "version": "1.0.0",
-  "description": "Welcome to the QA Wolf take home assignment for our [QA Engineer](https://www.notion.so/qawolf/QA-Wolf-QA-Engineer-Remote-156203a1e476459ea5e6ffca972d0efe) role! We appreciate your interest and look forward to seeing what you come up with.",
+  "description": "Welcome to the QA Wolf take home assignment for our QA Engineer role! We appreciate your interest and look forward to seeing what you come up with.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
