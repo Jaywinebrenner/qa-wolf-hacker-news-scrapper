@@ -19,7 +19,7 @@ async function fetchArticles() {
           const link = titleElement ? titleElement.href : '#';
 
 
-          return { title, link, time };
+          return { title, link };
         })
       );
 
