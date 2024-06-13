@@ -3,15 +3,15 @@ const express = require('express');
 const { chromium } = require('playwright');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Define a middleware to set the correct MIME type for CSS files
+// Middleware to set the correct MIME type for CSS files
 app.use((req, res, next) => {
   if (req.url.endsWith('.css')) {
-    res.header('Content-Type', 'text/css');
+    res.setHeader('Content-Type', 'text/css');
   }
   next();
 });
@@ -71,6 +71,7 @@ async function fetchArticles() {
   }
 }
 
+// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
