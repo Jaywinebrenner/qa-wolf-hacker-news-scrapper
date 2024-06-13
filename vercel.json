@@ -1,12 +1,12 @@
 {
     "version": 2,
+    "builds": [
+      { "src": "index.js", "use": "@vercel/node" }
+    ],
     "routes": [
       { "src": "/api/articles", "dest": "/index.js" },
       { "handle": "filesystem" },
       { "src": "/(.*)", "dest": "/index.js" }
-    ],
-    "builds": [
-      { "src": "index.js", "use": "@vercel/node" }
     ],
     "buildCommand": "npm install && npx playwright install chromium"
   }
