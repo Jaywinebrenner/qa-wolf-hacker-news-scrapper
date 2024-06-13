@@ -4,10 +4,10 @@
       { "src": "index.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/api/articles", "dest": "/index.js" },
-      { "handle": "filesystem" },
-      { "src": "/(.*)", "dest": "/index.html" }
-    ],
-    "buildCommand": "npx playwright install chromium"
+        { "src": "/api/articles", "dest": "/index.js" },
+        { "handle": "filesystem" },
+        { "src": "/(.*)", "dest": "/index.js" }
+      ],
+      "buildCommand": "npx playwright install chromium"
   }
   
