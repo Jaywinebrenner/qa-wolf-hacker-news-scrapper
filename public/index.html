@@ -6,12 +6,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hacker News Articles</title>
+  <!-- Use absolute paths starting with '/' to ensure correct file loading -->
   <link rel="stylesheet" href="/style.css">
-  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" href="/favicon.ico">
 </head>
 <body>
   <div class="nav">
-    <img src="logo.svg"/>
+    <!-- Use absolute paths for images as well -->
+    <img src="/logo.svg" alt="Logo">
     <h1>Top 100 Newest Hacker News Articles</h1>
   </div>
   <div class="container">
@@ -19,12 +21,12 @@
       <p class="assignment-title">QA Wolf take home assignment</p>
       <p>Jay Winebrenner</p>
       <p>jaywinebrenner@gmail.com</p>
-
     </div>
     <button id="fetch-articles">FETCH ARTICLES</button>
     <ul id="articles-list"></ul>
     <div id="loading-text" style="display: none; font-size: 24px;">LOADING...</div>
   </div>
+  <!-- Ensure script src uses absolute path -->
   <script src="/app.js"></script>
 </body>
 </html>
