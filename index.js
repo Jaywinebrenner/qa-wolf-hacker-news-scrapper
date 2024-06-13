@@ -22,8 +22,7 @@ app.get('/api/articles', async (req, res) => {
     const articles = await fetchArticles();
     res.json({ articles });
   } catch (error) {
-    console.error('Error fetching articles:', error.message);
-    console.error('Error stack trace:', error.stack);
+    console.error('Error fetching articles:', error);
     res.status(500).json({ error: 'Failed to fetch articles' });
   }
 });
@@ -43,6 +42,7 @@ async function fetchArticles() {
       const newArticles = await page.$$eval('.athing', (articles) =>
         articles.map((article) => {
           const titleElement = article.querySelector('.titleline > a');
+
           const title = titleElement ? titleElement.innerText : 'No title';
           const link = titleElement ? titleElement.href : '#';
 
@@ -64,19 +64,14 @@ async function fetchArticles() {
 
     return articles.slice(0, 100); // Return only the first 100 articles
   } catch (error) {
-    console.error('Error in fetchArticles:', error.message);
-    console.error('Error stack trace:', error.stack);
+    console.error('Error in fetchArticles:', error);
     return [];
   } finally {
     await browser.close();
   }
 }
 
-// Start server locally (if testing locally)
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
-}
-
-module.exports = app;
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
